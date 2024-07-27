@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meine Persönliche Website</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Lebenslauf', resume_path %></li>
+      <li><%= link_to 'Projekte', projects_path %></li>
+      <li><%= link_to 'Kontakt', contact_path %></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
+</html>
+
