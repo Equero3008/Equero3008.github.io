@@ -1,0 +1,178 @@
+/* style.css */
+:root {
+    --bg-color: #fafafa;      /* Sehr helles Grau */
+    --text-color: #222222;    /* Fast Schwarz */
+    --accent-color: #666666;  /* Dunkelgrau für Metadaten */
+    --border-color: #dddddd;  /* Leichte Linien */
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-serif: 'Georgia', serif; /* Für Überschriften */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Typografie */
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 0.5rem;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-color);
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: var(--bg-color);
+    background-color: var(--text-color);
+}
+
+/* Navigation (Zurück-Button auf Unterseiten) */
+nav {
+    margin-bottom: 3rem;
+}
+nav a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: none;
+}
+
+/* Intro Page Styles */
+.intro-container {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    max-width: 600px;
+    margin-bottom: 3rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 2rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: 1px solid var(--text-color);
+    font-family: var(--font-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* CV Layout */
+.cv-header {
+    margin-bottom: 4rem;
+}
+.cv-sub {
+    color: var(--accent-color);
+}
+
+.cv-entry {
+    display: grid;
+    grid-template-columns: 180px 1fr; /* Datum links, Inhalt rechts */
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.cv-date {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    text-align: right;
+}
+
+.cv-content h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: var(--font-main);
+    margin-bottom: 0.2rem;
+}
+
+.cv-company {
+    font-style: italic;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.skill-category strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Projects Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+.project-card {
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    transition: transform 0.2s ease;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--text-color);
+}
+
+/* Mobile Optimierung */
+@media (max-width: 600px) {
+    .cv-entry {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    .cv-date {
+        text-align: left;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+}
