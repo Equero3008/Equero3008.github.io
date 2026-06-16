@@ -1,189 +1,197 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta name="description" content="Portfolio und Lebenslauf von Enrico Kleffmann. Physik-Student an der TUM, Entwickler und Maker aus Bochum/München.">
-    <meta name="author" content="Enrico Kleffmann">
-    <meta name="keywords" content="Enrico Kleffmann, Physik, TUM, Student, Lebenslauf, Portfolio, Embedded Systems, Bochum, München">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lebenslauf - Enrico Kleffmann</title>
+    <title>Lebenslauf — Enrico Kleffmann</title>
+    <meta name="description" content="Résumé / Lebenslauf of Enrico Kleffmann — Physics student at TUM, embedded systems, maker.">
+    <meta name="author" content="Enrico Kleffmann">
     <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="i18n.js" defer></script>
+    <span data-i18n-title="cv.title" hidden></span>
 </head>
-
 <body>
+    <div class="scroll-progress"></div>
 
-    <nav>
-        <a href="index.html">← Zurück zur Übersicht</a>
-    </nav>
-
-    <header class="cv-header">
-        <h1>Enrico Kleffmann</h1>
-        <p class="cv-sub">München, Deutschland • Geb. 2008</p>
+    <header class="topbar">
+        <a href="index.html" class="brand">Enrico&nbsp;Kleffmann</a>
+        <nav>
+            <a href="index.html" data-i18n="cv.back">← Zurück</a>
+            <a href="projects.html" data-i18n="nav.projects">Projekte</a>
+            <a href="contact.html" data-i18n="nav.contact">Kontakt</a>
+        </nav>
+        <div class="controls">
+            <button id="langToggle" class="lang-toggle" aria-label="Switch language">EN</button>
+        </div>
     </header>
-    
-    <section>
-        <h2>Praktische Erfahrungen</h2>
-        
-         <div class="cv-entry">
-            <div class="cv-date">10/2025 – today</div>
+
+    <header class="cv-header reveal">
+        <h1 data-i18n="nav.cv">Lebenslauf</h1>
+        <p class="cv-sub" data-i18n="cv.location">München, Deutschland · Geb. 2008</p>
+    </header>
+
+    <section class="accent-red">
+        <div class="section-head reveal"><span class="sec-num">01</span><h2 data-i18n="cv.h.exp">Praktische Erfahrungen</h2></div>
+
+        <div class="cv-entry reveal-left s1">
+            <div class="cv-date">10/2025 – <span data-i18n="cv.today">heute</span></div>
             <div class="cv-content">
-                <h3>Werksstudent</h3>
+                <h3 data-i18n="cv.exp1.role">Werkstudent</h3>
                 <span class="cv-company">MTU Aero Engines AG, München</span>
-                <p>Produktionsservice und Automatisieren von Datenverwaltung.</p>
+                <p data-i18n="cv.exp1.desc">Produktionsservice und Automatisierung der Datenverwaltung.</p>
             </div>
         </div>
-        
-        <div class="cv-entry">
+
+        <div class="cv-entry reveal-left s2">
             <div class="cv-date">08/2025 – 09/2025</div>
             <div class="cv-content">
-                <h3>Freiwilliges Praktikum</h3>
+                <h3 data-i18n="cv.exp2.role">Freiwilliges Praktikum</h3>
                 <span class="cv-company">Noyes-Robotics GmbH, München</span>
-                <p>Produktion und Embedded Programming.</p>
+                <p data-i18n="cv.exp2.desc">Produktion und Embedded Programming.</p>
             </div>
         </div>
 
-        <div class="cv-entry">
+        <div class="cv-entry reveal-left s3">
             <div class="cv-date">09/2023 – 07/2025</div>
             <div class="cv-content">
-                <h3>Produktion & Prozessoptimierung</h3>
+                <h3 data-i18n="cv.exp3.role">Produktion & Prozessoptimierung</h3>
                 <span class="cv-company">Auto-Intern GmbH, Bochum (Mini-Job)</span>
-                <p>Produktion und Optimierung von Produktionsabläufen.</p>
+                <p data-i18n="cv.exp3.desc">Produktion und Optimierung von Produktionsabläufen.</p>
             </div>
         </div>
 
-        <div class="cv-entry">
+        <div class="cv-entry reveal-left s4">
             <div class="cv-date">12/2023 – 05/2024</div>
             <div class="cv-content">
-                <h3>Freelance SEO-Data</h3>
+                <h3 data-i18n="cv.exp4.role">Freelance SEO-Data</h3>
                 <span class="cv-company">Inara-schreibt, Bochum</span>
-                <p>Organisation und Auswertung von SEO-Daten.</p>
+                <p data-i18n="cv.exp4.desc">Organisation und Auswertung von SEO-Daten.</p>
             </div>
         </div>
 
-        <div class="cv-entry">
-            <div class="cv-date">04/2022 – 04/2022</div>
+        <div class="cv-entry reveal-left s5">
+            <div class="cv-date">04/2022</div>
             <div class="cv-content">
-                <h3>Pflichtpraktikum Web & Backend</h3>
+                <h3 data-i18n="cv.exp5.role">Pflichtpraktikum Web & Backend</h3>
                 <span class="cv-company">9elements, Bochum</span>
-                <p>Einblicke in Webdesign, Backend Development und Ruby on Rails.</p>
+                <p data-i18n="cv.exp5.desc">Einblicke in Webdesign, Backend-Development und Ruby on Rails.</p>
             </div>
         </div>
     </section>
 
-    <section>
-        <h2>Auszeichnungen & Stipendien</h2>
-        <div class="cv-entry">
-            <div class="cv-date">Seit 03/2026</div> <div class="cv-content">
-                <h3>Stipendium der Studienstiftung des deutschen Volkes</h3>
+    <section class="accent-blue">
+        <div class="section-head reveal"><span class="sec-num">02</span><h2 data-i18n="cv.h.awards">Auszeichnungen & Stipendien</h2></div>
+
+        <div class="cv-entry reveal-left s1">
+            <div class="cv-date">03/2026 – <span data-i18n="cv.today">heute</span></div>
+            <div class="cv-content">
+                <h3 data-i18n="cv.aw1.role">Stipendium der Studienstiftung des deutschen Volkes</h3>
                 <span class="cv-company">Studienstiftung des deutschen Volkes</span>
-                <p>
-                    Förderung durch die renomierteste Studienstiftung deutschlands. 
-                </p>
+                <p data-i18n="cv.aw1.desc">Förderung durch die renommierteste Studienstiftung Deutschlands.</p>
             </div>
         </div>
-        <div class="cv-entry">
-            <div class="cv-date">Seit 10/2025</div> <div class="cv-content">
-                <h3>Deutschlandstipendium</h3>
+
+        <div class="cv-entry reveal-left s2">
+            <div class="cv-date">10/2025 – 02/2026</div>
+            <div class="cv-content">
+                <h3 data-i18n="cv.aw2.role">Deutschlandstipendium</h3>
                 <span class="cv-company">Technische Universität München (TUM)</span>
-                <p>
-                    Stipendium für begabte, engagierte und leistungsstarke Studierende. 
-                </p>
+                <p data-i18n="cv.aw2.desc">Stipendium für begabte, engagierte und leistungsstarke Studierende.</p>
             </div>
         </div>
     </section>
-    
-    <section>
-        <h2>Besonderes Engagement</h2>
-        
-        <div class="cv-entry">
-            <div class="cv-date">12/2025 – today</div>
+
+    <section class="accent-green">
+        <div class="section-head reveal"><span class="sec-num">03</span><h2 data-i18n="cv.h.engage">Besonderes Engagement</h2></div>
+
+        <div class="cv-entry reveal-left s1">
+            <div class="cv-date">12/2025 – <span data-i18n="cv.today">heute</span></div>
             <div class="cv-content">
-                <h3>WARR Rocketry</h3>
+                <h3 data-i18n="cv.en1.role">WARR Rocketry</h3>
                 <span class="cv-company">WARR e.V.</span>
-                <p>Development von Electronic Systems für Airbreathing Vehicles.</p>
+                <p data-i18n="cv.en1.desc">Entwicklung von Electronic Systems für Airbreathing Vehicles.</p>
             </div>
         </div>
-        
-        <div class="cv-entry">
+
+        <div class="cv-entry reveal-left s2">
             <div class="cv-date">10/2023 – 12/2023</div>
             <div class="cv-content">
-                <h3>Quantum Quest</h3>
+                <h3 data-i18n="cv.en2.role">Quantum Quest</h3>
                 <span class="cv-company">Universiteit van Amsterdam & RUB</span>
-                <p>5-Wochen-Programm: Einführung in Quantencomputing und Kryptographie.</p>
+                <p data-i18n="cv.en2.desc">5-Wochen-Programm: Einführung in Quantencomputing und Kryptographie.</p>
             </div>
         </div>
 
-        <div class="cv-entry">
+        <div class="cv-entry reveal-left s3">
             <div class="cv-date">08/2024 – 07/2025</div>
             <div class="cv-content">
-                <h3>Gründer & Leiter Elektrotechnik AG</h3>
+                <h3 data-i18n="cv.en3.role">Gründer & Leiter Elektrotechnik-AG</h3>
                 <span class="cv-company">Theodor-Körner-Schule</span>
-                <p>Leitung von Projekten auf Arduino-Basis (z.B. RC Cars, LED Matrix).</p>
+                <p data-i18n="cv.en3.desc">Leitung von Projekten auf Arduino-Basis (z. B. RC-Cars, LED-Matrix).</p>
             </div>
         </div>
 
-        <div class="cv-entry">
+        <div class="cv-entry reveal-left s4">
             <div class="cv-date">08/2023 – 07/2025</div>
             <div class="cv-content">
-                <h3>Leiter Theater AG</h3>
+                <h3 data-i18n="cv.en4.role">Leiter Theater-AG</h3>
                 <span class="cv-company">Theodor-Körner-Schule</span>
-                <p>Leiten, Schreiben und Bühnenbilddesign für die Unterstufe.</p>
+                <p data-i18n="cv.en4.desc">Leiten, Schreiben und Bühnenbilddesign für die Unterstufe.</p>
             </div>
         </div>
     </section>
 
-    <section>
-        <h2>Bildung</h2>
-        
-        <div class="cv-entry">
-            <div class="cv-date">10/2025 – today</div>
+    <section class="accent-yellow">
+        <div class="section-head reveal"><span class="sec-num">04</span><h2 data-i18n="cv.h.edu">Bildung</h2></div>
+
+        <div class="cv-entry reveal-left s1">
+            <div class="cv-date">10/2025 – <span data-i18n="cv.today">heute</span></div>
             <div class="cv-content">
-                <h3>B.Sc. Physik</h3>
-                <span class="cv-company">Technische Universität München</span> 
+                <h3 data-i18n="cv.ed1.role">B.Sc. Physik</h3>
+                <span class="cv-company">Technische Universität München</span>
+            </div>
         </div>
-        <div class="cv-entry">
+
+        <div class="cv-entry reveal-left s2">
             <div class="cv-date">08/2017 – 07/2025</div>
             <div class="cv-content">
-                <h3>Allgemeine Hochschulreife (Abitur)</h3>
+                <h3 data-i18n="cv.ed2.role">Allgemeine Hochschulreife (Abitur)</h3>
                 <span class="cv-company">Theodor-Körner-Schule, Bochum</span>
-                <p><strong>Note: 1,6</strong><br>
-                Fächer: Physik, Mathematik, Philosophie, Deutsch.</p>
+                <p data-i18n-html="cv.ed2.desc"><strong>Note: 1,6</strong><br>Fächer: Physik, Mathematik, Philosophie, Deutsch.</p>
             </div>
         </div>
     </section>
 
-    <section>
-        <h2>Kenntnisse</h2>
+    <section class="accent-red">
+        <div class="section-head reveal"><span class="sec-num">05</span><h2 data-i18n="cv.h.skills">Kenntnisse</h2></div>
         <div class="skills-grid">
-            <div class="skill-category">
-                <strong>Development</strong>
-                <p>Embedded C++ (basics), Rust (basics), Java (basics), VBA, Google Apps Scripts, Visual Basic</p>
+            <div class="skill-category reveal s1">
+                <strong data-i18n="cv.sk.dev">Development</strong>
+                <p data-i18n="cv.sk.dev.v">Embedded C++ (Grundlagen), Rust (Grundlagen), Java (Grundlagen), VBA, Google Apps Script, Visual Basic</p>
             </div>
-            <div class="skill-category">
-                <strong>Systeme & Tools</strong>
-                <p>Linux, MacOS, Windows, Vim, Git, GitHub, LaTeX, Markdown</p>
+            <div class="skill-category reveal s2">
+                <strong data-i18n="cv.sk.sys">Systeme & Tools</strong>
+                <p data-i18n="cv.sk.sys.v">Linux, macOS, Windows, Vim, Git, GitHub, LaTeX, Markdown</p>
             </div>
-            <div class="skill-category">
-                <strong>Hardware & CAD</strong>
-                <p>Fusion 360, KiCad, Arduino/Embedded Systems</p>
+            <div class="skill-category reveal s3">
+                <strong data-i18n="cv.sk.hw">Hardware & CAD</strong>
+                <p data-i18n="cv.sk.hw.v">Fusion 360, KiCad, Arduino / Embedded Systems</p>
             </div>
-            <div class="skill-category">
-                <strong>Sprachen</strong>
-                <p>Deutsch (Muttersprache)<br>Englisch (Fließend)</p>
+            <div class="skill-category reveal s4">
+                <strong data-i18n="cv.sk.lang">Sprachen</strong>
+                <p data-i18n-html="cv.sk.lang.v">Deutsch (Muttersprache)<br>Englisch (fließend)</p>
             </div>
         </div>
     </section>
 
-    <footer style="margin-top: 4rem; font-size: 0.8rem; color: #888; text-align: center;">
-        <p>&copy; 2026 Enrico Kleffmann</p>
+    <footer>
+        <span class="label" data-i18n="footer.tagline">Physik-Student · Embedded · Maker</span>
+        <span>© 2026 Enrico Kleffmann</span>
     </footer>
 
 </body>
-
 </html>
-
-
-
-
-
