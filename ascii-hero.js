@@ -5,7 +5,7 @@ const CONFIG = {
   name: "Enrico Kleffmann",
   font: '900 {size}px "Arial Black", Impact, "Helvetica Neue", sans-serif', // font used to draw the name
   cols: 90,              // grid width in characters
-  rows: 18,              // grid height in characters
+  rows: 22,              // grid height in characters
   ramp: " .:-=+*#%@",    // light -> dark characters used to draw shapes
   glyphs: "!<>-_\\/[]{}=+*^?#@$%&", // scramble characters during morphs
   fallMs: 2600,          // intro trickle-down
@@ -33,7 +33,7 @@ cvs.height = ROWS * CH;
 const ctx = cvs.getContext("2d", { willReadFrequently: true });
 
 /* Turn whatever is drawn on the hidden canvas into a grid of characters */
-function sample() {
+function sample(boost = 1) {
   const d = ctx.getImageData(0, 0, cvs.width, cvs.height).data;
   const g = new Array(COLS * ROWS);
   const R = CONFIG.ramp, n = R.length - 1;
@@ -45,7 +45,7 @@ function sample() {
           s += d[(y * cvs.width + x) * 4 + 3];
           k++;
         }
-      const a = s / (k * 255);
+      const a = Math.min(1, s / (k * 255) * boost);
       g[r * COLS + c] = a < 0.08 ? " " : R[Math.max(1, Math.min(n, Math.round(a * n)))];
     }
   }
@@ -63,26 +63,34 @@ function eyes(open, look = 0) {
   ctx.clearRect(0, 0, W, H);
   const rx = W * 0.17, ry = Math.min(H * 0.34, rx * 0.62), h = ry * open, cy = H / 2;
 
-  for (const cx of [W * 0.28, W * 0.72]) {
-    const ix = cx + look * rx * 0.45; // iris position follows the look direction
+  // each eye is a bit different: size, height, tilt, lid weight, pupil offset
+  const EYES = [
+    { x: 0.27, dy: -0.04, sx: 1.05, sy: 0.92, rot: -0.10, lid: 0.8, pup: 0.46, ox: 0.10, oy: 0.05 },
+    { x: 0.73, dy:  0.05, sx: 0.90, sy: 1.08, rot:  0.07, lid: 1.2, pup: 0.30, ox: -0.08, oy: -0.04 },
+  ];
+  for (const e of EYES) {
+    const cx = W * e.x, ey = cy + H * e.dy, erx = rx * e.sx, eh = h * e.sy;
+    const ix = look * erx * 0.45 + erx * e.ox, iy = ry * e.oy; // iris follows look, slightly off-centre
     ctx.save();
+    ctx.translate(cx, ey);
+    ctx.rotate(e.rot);
     ctx.beginPath();
-    ctx.moveTo(cx - rx, cy);
-    ctx.quadraticCurveTo(cx, cy - 2 * h, cx + rx, cy);
-    ctx.quadraticCurveTo(cx, cy + 2 * h, cx - rx, cy);
+    ctx.moveTo(-erx, 0);
+    ctx.quadraticCurveTo(-erx * 0.1, -2.3 * eh, erx, -eh * 0.2);   // lopsided upper lid
+    ctx.quadraticCurveTo(erx * 0.2, 1.6 * eh, -erx, 0);             // flatter lower lid
     ctx.closePath();
-    ctx.fillStyle = "rgba(255,255,255,.22)";
+    ctx.fillStyle = "rgba(255,255,255,.15)";
     ctx.fill();
-    ctx.lineWidth = CH * 0.9;
+    ctx.lineWidth = CH * e.lid;
     ctx.strokeStyle = "#fff";
     ctx.stroke();
     ctx.clip();
     ctx.fillStyle = "#fff";
-    ctx.beginPath(); ctx.arc(ix, cy, ry * 0.78, 0, Math.PI * 2); ctx.fill();   // iris
+    ctx.beginPath(); ctx.arc(ix, iy, ry * 0.72, 0, Math.PI * 2); ctx.fill();   // iris
     ctx.globalCompositeOperation = "destination-out";
-    ctx.beginPath(); ctx.arc(ix, cy, ry * 0.38, 0, Math.PI * 2); ctx.fill();   // pupil
+    ctx.beginPath(); ctx.arc(ix + ry * 0.05, iy, ry * e.pup, 0, Math.PI * 2); ctx.fill();   // pupil
     ctx.globalCompositeOperation = "source-over";
-    ctx.beginPath(); ctx.arc(ix + ry * 0.22, cy - ry * 0.22, ry * 0.12, 0, Math.PI * 2); ctx.fill(); // glint
+    ctx.beginPath(); ctx.arc(ix + ry * 0.3, iy - ry * 0.25, ry * 0.09, 0, Math.PI * 2); ctx.fill(); // glint
     ctx.restore();
   }
   const g = sample();
@@ -90,19 +98,31 @@ function eyes(open, look = 0) {
   return g;
 }
 
-/* Your name in big letters, auto-shrunk to fit */
+/* Your name: one word per line, stretched tall and bold so it stays readable */
 function textFrame(text) {
-  const W = cvs.width, H = cvs.height;
+  const W = cvs.width, H = cvs.height, words = text.split(" "), STRETCH = 1.55;
   ctx.clearRect(0, 0, W, H);
-  let size = H * 0.5;
-  ctx.font = CONFIG.font.replace("{size}", size);
-  const w = ctx.measureText(text).width, max = W * 0.92;
-  if (w > max) { size *= max / w; ctx.font = CONFIG.font.replace("{size}", size); }
   ctx.fillStyle = "#fff";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText(text, W / 2, H / 2);
-  return sample();
+  let size = H;
+  for (const w of words) {
+    ctx.font = CONFIG.font.replace("{size}", size);
+    size = Math.min(size, size * (W * 0.96) / ctx.measureText(w).width);
+  }
+  size = Math.min(size, H / words.length / STRETCH / 0.8);
+  ctx.font = CONFIG.font.replace("{size}", size);
+  ctx.lineWidth = size * 0.04; ctx.strokeStyle = "#fff"; ctx.lineJoin = "round";
+  words.forEach((w, i) => {
+    const y = H * (i + 0.5) / words.length;
+    ctx.save();
+    ctx.translate(W / 2, y);
+    ctx.scale(1, STRETCH);
+    ctx.fillText(w, 0, 0);
+    ctx.strokeText(w, 0, 0);
+    ctx.restore();
+  });
+  return sample(2);
 }
 
 const toText = g => {
