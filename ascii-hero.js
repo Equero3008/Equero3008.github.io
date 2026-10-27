@@ -63,36 +63,27 @@ function eyes(open, look = 0) {
   ctx.clearRect(0, 0, W, H);
   const rx = W * 0.17, ry = Math.min(H * 0.34, rx * 0.62), h = ry * open, cy = H / 2;
 
-  // two mirrored eyes: same shape, slightly lopsided lids and off-centre pupils so they feel hand-made
-  const EYES = [
-    { x: 0.27, m: 1 },
-    { x: 0.73, m: -1 },
-  ];
-  const E = { rot: -0.09, lid: 1.15, pup: 0.4, ox: 0.1, oy: 0.06 };
-  for (const e of EYES) {
-    const cx = W * e.x, erx = rx, eh = h;
-    const ix = e.m * look * erx * 0.45 + erx * E.ox, iy = ry * E.oy;
+  for (const cx of [W * 0.28, W * 0.72]) {
+    const ix = cx + look * rx * 0.45; // iris position follows the look direction
     ctx.save();
-    ctx.translate(cx, cy);
-    ctx.scale(e.m, 1);
-    ctx.rotate(E.rot);
     ctx.beginPath();
-    ctx.moveTo(-erx, 0);
-    ctx.quadraticCurveTo(-erx * 0.1, -2.3 * eh, erx, -eh * 0.2);   // lopsided upper lid
-    ctx.quadraticCurveTo(erx * 0.2, 1.6 * eh, -erx, 0);             // flatter lower lid
+    ctx.moveTo(cx - rx, cy);
+    ctx.quadraticCurveTo(cx, cy - 2 * h, cx + rx, cy);
+    ctx.quadraticCurveTo(cx, cy + 2 * h, cx - rx, cy);
     ctx.closePath();
-    ctx.fillStyle = "rgba(255,255,255,.15)";
+    ctx.fillStyle = "rgba(255,255,255,.12)";
     ctx.fill();
-    ctx.lineWidth = CH * E.lid;
-    ctx.strokeStyle = "#fff";
+    ctx.lineWidth = CH * 0.65;
+    ctx.strokeStyle = "rgba(255,255,255,.8)";
     ctx.stroke();
     ctx.clip();
-    ctx.fillStyle = "#fff";
-    ctx.beginPath(); ctx.arc(ix, iy, ry * 0.72, 0, Math.PI * 2); ctx.fill();   // iris
+    ctx.fillStyle = "rgba(255,255,255,.55)";
+    ctx.beginPath(); ctx.arc(ix, cy, ry * 0.78, 0, Math.PI * 2); ctx.fill();   // iris
     ctx.globalCompositeOperation = "destination-out";
-    ctx.beginPath(); ctx.arc(ix + ry * 0.05, iy, ry * E.pup, 0, Math.PI * 2); ctx.fill();   // pupil
+    ctx.beginPath(); ctx.arc(ix, cy, ry * 0.38, 0, Math.PI * 2); ctx.fill();   // pupil
     ctx.globalCompositeOperation = "source-over";
-    ctx.beginPath(); ctx.arc(ix + ry * 0.3, iy - ry * 0.25, ry * 0.09, 0, Math.PI * 2); ctx.fill(); // glint
+    ctx.fillStyle = "#fff";
+    ctx.beginPath(); ctx.arc(ix + ry * 0.22, cy - ry * 0.22, ry * 0.12, 0, Math.PI * 2); ctx.fill(); // glint
     ctx.restore();
   }
   const g = sample();
