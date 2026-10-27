@@ -13,12 +13,12 @@ const I18N = {
     "nav.cv": "Lebenslauf",
     "nav.projects": "Projekte",
     "nav.contact": "Kontakt",
-    "footer.tagline": "Physik-Student · Embedded · Maker",
+    "footer.tagline": "Engineering-Science-Student · Embedded · Maker",
 
     // ---- Index ----
     "index.title": "Enrico Kleffmann — Portfolio",
-    "hero.eyebrow": "Physik · Embedded Systems · Maker",
-    "hero.tagline": "Physikstudent, Hobby-Engineer & Tech-Enthusiast.<br>Fokus auf Embedded Systems und das Zusammenbringen junger, motivierter Menschen.",
+    "hero.eyebrow": "Engineering Science · Embedded Systems · Maker",
+    "hero.tagline": "Engineering-Science-Student, Hobby-Engineer & Tech-Enthusiast.<br>Fokus auf Embedded Systems und das Zusammenbringen junger, motivierter Menschen.",
     "btn.cv": "Lebenslauf",
     "btn.projects": "Projekte",
     "btn.contact": "Kontakt",
@@ -60,7 +60,7 @@ const I18N = {
     "cv.en4.role": "Leiter Theater-AG",
     "cv.en4.desc": "Leiten, Schreiben und Bühnenbilddesign für die Unterstufe.",
 
-    "cv.ed1.role": "B.Sc. Physik",
+    "cv.ed1.role": "B.Sc. Engineering Science",
     "cv.ed2.role": "Allgemeine Hochschulreife (Abitur)",
     "cv.ed2.desc": "<strong>Note: 1,6</strong><br>Fächer: Physik, Mathematik, Philosophie, Deutsch.",
 
@@ -116,12 +116,12 @@ const I18N = {
     "nav.cv": "Résumé",
     "nav.projects": "Projects",
     "nav.contact": "Contact",
-    "footer.tagline": "Physics student · Embedded · Maker",
+    "footer.tagline": "Engineering Science student · Embedded · Maker",
 
     // ---- Index ----
     "index.title": "Enrico Kleffmann — Portfolio",
-    "hero.eyebrow": "Physics · Embedded Systems · Maker",
-    "hero.tagline": "Physics student, hobby engineer & tech enthusiast.<br>Focused on embedded systems and bringing motivated young people together.",
+    "hero.eyebrow": "Engineering Science · Embedded Systems · Maker",
+    "hero.tagline": "Engineering Science student, hobby engineer & tech enthusiast.<br>Focused on embedded systems and bringing motivated young people together.",
     "btn.cv": "Résumé",
     "btn.projects": "Projects",
     "btn.contact": "Contact",
@@ -163,7 +163,7 @@ const I18N = {
     "cv.en4.role": "Head of Theatre Club",
     "cv.en4.desc": "Directing, writing and stage design for the lower grades.",
 
-    "cv.ed1.role": "B.Sc. Physics",
+    "cv.ed1.role": "B.Sc. Engineering Science",
     "cv.ed2.role": "University Entrance Qualification (Abitur)",
     "cv.ed2.desc": "<strong>Grade: 1.6</strong><br>Subjects: Physics, Mathematics, Philosophy, German.",
 
