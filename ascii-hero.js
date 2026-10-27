@@ -5,7 +5,7 @@ const CONFIG = {
   name: "Enrico Kleffmann",
   font: '900 {size}px "Arial Black", Impact, "Helvetica Neue", sans-serif', // font used to draw the name
   cols: 90,              // grid width in characters
-  rows: 22,              // grid height in characters
+  rows: 16,              // grid height in characters
   ramp: " .:-=+*#%@",    // light -> dark characters used to draw shapes
   glyphs: "!<>-_\\/[]{}=+*^?#@$%&", // scramble characters during morphs
   fallMs: 2600,          // intro trickle-down
@@ -63,17 +63,19 @@ function eyes(open, look = 0) {
   ctx.clearRect(0, 0, W, H);
   const rx = W * 0.17, ry = Math.min(H * 0.34, rx * 0.62), h = ry * open, cy = H / 2;
 
-  // each eye is a bit different: size, height, tilt, lid weight, pupil offset
+  // two mirrored eyes: same shape, slightly lopsided lids and off-centre pupils so they feel hand-made
   const EYES = [
-    { x: 0.27, dy: -0.04, sx: 1.05, sy: 0.92, rot: -0.10, lid: 0.8, pup: 0.46, ox: 0.10, oy: 0.05 },
-    { x: 0.73, dy:  0.05, sx: 0.90, sy: 1.08, rot:  0.07, lid: 1.2, pup: 0.30, ox: -0.08, oy: -0.04 },
+    { x: 0.27, m: 1 },
+    { x: 0.73, m: -1 },
   ];
+  const E = { rot: -0.09, lid: 1.15, pup: 0.4, ox: 0.1, oy: 0.06 };
   for (const e of EYES) {
-    const cx = W * e.x, ey = cy + H * e.dy, erx = rx * e.sx, eh = h * e.sy;
-    const ix = look * erx * 0.45 + erx * e.ox, iy = ry * e.oy; // iris follows look, slightly off-centre
+    const cx = W * e.x, erx = rx, eh = h;
+    const ix = e.m * look * erx * 0.45 + erx * E.ox, iy = ry * E.oy;
     ctx.save();
-    ctx.translate(cx, ey);
-    ctx.rotate(e.rot);
+    ctx.translate(cx, cy);
+    ctx.scale(e.m, 1);
+    ctx.rotate(E.rot);
     ctx.beginPath();
     ctx.moveTo(-erx, 0);
     ctx.quadraticCurveTo(-erx * 0.1, -2.3 * eh, erx, -eh * 0.2);   // lopsided upper lid
@@ -81,14 +83,14 @@ function eyes(open, look = 0) {
     ctx.closePath();
     ctx.fillStyle = "rgba(255,255,255,.15)";
     ctx.fill();
-    ctx.lineWidth = CH * e.lid;
+    ctx.lineWidth = CH * E.lid;
     ctx.strokeStyle = "#fff";
     ctx.stroke();
     ctx.clip();
     ctx.fillStyle = "#fff";
     ctx.beginPath(); ctx.arc(ix, iy, ry * 0.72, 0, Math.PI * 2); ctx.fill();   // iris
     ctx.globalCompositeOperation = "destination-out";
-    ctx.beginPath(); ctx.arc(ix + ry * 0.05, iy, ry * e.pup, 0, Math.PI * 2); ctx.fill();   // pupil
+    ctx.beginPath(); ctx.arc(ix + ry * 0.05, iy, ry * E.pup, 0, Math.PI * 2); ctx.fill();   // pupil
     ctx.globalCompositeOperation = "source-over";
     ctx.beginPath(); ctx.arc(ix + ry * 0.3, iy - ry * 0.25, ry * 0.09, 0, Math.PI * 2); ctx.fill(); // glint
     ctx.restore();
@@ -100,7 +102,7 @@ function eyes(open, look = 0) {
 
 /* Your name: one word per line, stretched tall and bold so it stays readable */
 function textFrame(text) {
-  const W = cvs.width, H = cvs.height, words = text.split(" "), STRETCH = 1.55;
+  const W = cvs.width, H = cvs.height, words = [text], STRETCH = 2;
   ctx.clearRect(0, 0, W, H);
   ctx.fillStyle = "#fff";
   ctx.textAlign = "center";
@@ -179,8 +181,9 @@ function introOpen(t) {
 }
 
 // look-around keyframes: [time ms, direction]
-const LOOK = [[0, 0], [350, 0], [700, -1], [1250, -1], [1850, 1], [2400, 1], [2750, 0]];
-const lookBlink = 2850, lookMs = lookBlink + CONFIG.blinkMs + 350;
+const PAUSE = 2500; // extra time the eyes stay up before they look around
+const LOOK = [[0, 0], [PAUSE, 0], [PAUSE + 350, -1], [PAUSE + 900, -1], [PAUSE + 1500, 1], [PAUSE + 2050, 1], [PAUSE + 2400, 0]];
+const lookBlink = PAUSE + 2500, lookMs = lookBlink + CONFIG.blinkMs + 350;
 function lookAt(t) {
   for (let i = 1; i < LOOK.length; i++) {
     const [t1, v1] = LOOK[i], [t0, v0] = LOOK[i - 1];
