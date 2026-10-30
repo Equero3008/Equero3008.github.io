@@ -51,6 +51,9 @@ const I18N = {
     "cv.aw2.role": "Deutschlandstipendium",
     "cv.aw2.desc": "Stipendium für begabte, engagierte und leistungsstarke Studierende.",
 
+    "cv.en0.role": "Fachschaft MSE – IT-Referat",
+    "cv.en0.co": "Fachschaft MSE, Technische Universität München",
+    "cv.en0.desc": "Mitarbeit im IT-Referat der studentischen Vertretung der interdisziplinären Ingenieurstudiengänge an der TUM.",
     "cv.en1.role": "WARR Rocketry",
     "cv.en1.desc": "Entwicklung von Electronic Systems für Airbreathing Vehicles.",
     "cv.en2.role": "Quantum Quest",
@@ -61,6 +64,7 @@ const I18N = {
     "cv.en4.desc": "Leiten, Schreiben und Bühnenbilddesign für die Unterstufe.",
 
     "cv.ed1.role": "B.Sc. Engineering Science",
+    "cv.ed3.role": "B.Sc. Physik",
     "cv.ed2.role": "Allgemeine Hochschulreife (Abitur)",
     "cv.ed2.desc": "<strong>Note: 1,6</strong><br>Fächer: Physik, Mathematik, Philosophie, Deutsch.",
 
@@ -82,7 +86,7 @@ const I18N = {
     "proj.eq.badge": "Wichtigstes Projekt",
     "proj.eq.title": "Equez Unity",
     "proj.eq.meta": "Gründer & Entwickler · seit 2025",
-    "proj.eq.desc": "Bildungsplattform, die Lernende und Lehrende zusammenbringt: Echtzeit-Chaträume, ein kuratiertes Download-Center, ein Eventkalender mit RSVP, rollenbasierte Zugriffsrechte (Admin, Lehrkraft, Moderator, Student, Gast) sowie rollenspezifische Fortschritts-Dashboards. Privacy-first — nur notwendige Session-Cookies, kein Tracking, komplett zweisprachig.",
+    "proj.eq.desc": "Hub unseres Bildungs-Startups: schulübergreifende Arbeitsgemeinschaften (AGs), geleitet von Studierenden und engagierten Oberstufenschüler:innen, die in ihrem Fachgebiet führend sind. Weil mehrere Schulen zusammenarbeiten, entstehen Angebote für ganz spezielle Interessen, die eine einzelne Schule nie tragen könnte. Alles basiert auf Freiwilligen, die Gleichgesinnte finden und gemeinsam coole Projekte umsetzen wollen. Die Plattform bietet Chaträume, ein Download-Center, einen Eventkalender mit RSVP, rollenbasierte Zugriffsrechte und Fortschritts-Dashboards. Privacy-first — nur notwendige Session-Cookies, kein Tracking, komplett zweisprachig.",
     "proj.eq.link": "equez.de besuchen ↗",
 
     "proj.p1.title": "Elektrotechnik-AG & Arduino Education",
@@ -154,6 +158,9 @@ const I18N = {
     "cv.aw2.role": "Germany Scholarship (Deutschlandstipendium)",
     "cv.aw2.desc": "Scholarship for talented, committed and high-achieving students.",
 
+    "cv.en0.role": "Fachschaft MSE – IT Department",
+    "cv.en0.co": "Fachschaft MSE, Technical University of Munich",
+    "cv.en0.desc": "Part of the IT department of the student council representing the interdisciplinary engineering programmes at TUM.",
     "cv.en1.role": "WARR Rocketry",
     "cv.en1.desc": "Development of electronic systems for airbreathing vehicles.",
     "cv.en2.role": "Quantum Quest",
@@ -164,6 +171,7 @@ const I18N = {
     "cv.en4.desc": "Directing, writing and stage design for the lower grades.",
 
     "cv.ed1.role": "B.Sc. Engineering Science",
+    "cv.ed3.role": "B.Sc. Physics",
     "cv.ed2.role": "University Entrance Qualification (Abitur)",
     "cv.ed2.desc": "<strong>Grade: 1.6</strong><br>Subjects: Physics, Mathematics, Philosophy, German.",
 
@@ -185,7 +193,7 @@ const I18N = {
     "proj.eq.badge": "Flagship project",
     "proj.eq.title": "Equez Unity",
     "proj.eq.meta": "Founder & Developer · since 2025",
-    "proj.eq.desc": "An educational platform connecting learners and educators: real-time chat rooms, a curated download centre, an events calendar with RSVP, role-based access (admin, teacher, moderator, student, guest) and role-specific progress dashboards. Privacy-first — only necessary session cookies, no tracking, fully bilingual.",
+    "proj.eq.desc": "Hub of our educational startup: cross-school study groups (AGs) led by university students and advanced high-school students who excel in their field. With several schools involved, we can offer groups for very specific interests that no single school could support. Everything is built on volunteers who want to find like-minded people and do cool projects together. The platform provides chat rooms, a download centre, an events calendar with RSVP, role-based access and progress dashboards. Privacy-first — only necessary session cookies, no tracking, fully bilingual.",
     "proj.eq.link": "Visit equez.de ↗",
 
     "proj.p1.title": "Electronics Club & Arduino Education",
